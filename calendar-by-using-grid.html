@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar Making Practice by using grid</title>
+    <style>
+        .month{
+            display: grid;
+            grid-template-columns: repeat(7, 110px);
+            grid-template-rows: repeat(7, 70px);
+            grid-gap: 10px;
+            margin: 20px auto;
+            font-family: Arial, Helvetica, sans-serif;
+            width: 840px;
+            height: 560px;
+        }
+        .month-name{
+            grid-column: 1/8;
+            grid-row: 1/2;
+            font-size: 3.5em;
+            font-weight: bold;
+            text-align: center;
+        }
+        .day{
+            background: #80b4f8;
+            font-size: 2em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: #111;
+        }
+        .day-header{
+            background: #2c80ee;
+            color: #fff;
+        }
+        .day-disable{
+            color: #777;
+            background: #92bef7;
+        }
+    </style>
+</head>
+<body>
+    <div class="month">
+        <div class="month-name">February, 2021</div>
+        <div class="day day-header">Sun</div>
+        <div class="day day-header">Mon</div>
+        <div class="day day-header">Tue</div>
+        <div class="day day-header">Wed</div>
+        <div class="day day-header">Thu</div>
+        <div class="day day-header">Fri</div>
+        <div class="day day-header">Sat</div>
+        <div class="day day-disable">31</div>
+        <div class="day">1</div>
+        <div class="day">2</div>
+        <div class="day">3</div>
+        <div class="day">4</div>
+        <div class="day">5</div>
+        <div class="day">6</div>
+        <div class="day">7</div>
+        <div class="day">8</div>
+        <div class="day">9</div>
+        <div class="day">10</div>
+        <div class="day">11</div>
+        <div class="day">12</div>
+        <div class="day">13</div>
+        <div class="day">14</div>
+        <div class="day">15</div>
+        <div class="day">16</div>
+        <div class="day">17</div>
+        <div class="day">18</div>
+        <div class="day">19</div>
+        <div class="day">20</div>
+        <div class="day">21</div>
+        <div class="day">22</div>
+        <div class="day">23</div>
+        <div class="day">24</div>
+        <div class="day">25</div>
+        <div class="day">26</div>
+        <div class="day">27</div>
+        <div class="day">28</div>
+        <div class="day day-disable">1</div>
+        <div class="day day-disable">2</div>
+        <div class="day day-disable">3</div>
+        <div class="day day-disable">4</div>
+        <div class="day day-disable">5</div>
+        <div class="day day-disable">6</div>
+    </div>
+</body>
+</html>
