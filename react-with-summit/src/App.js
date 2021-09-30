@@ -1,24 +1,32 @@
-import { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import './App.css';
-import ThemeContext from './lib/ThemeContext';
+import Button from './components/Button';
+import Counter from './components/Counter';
+import Title from './components/Title';
 
 const App = () => {
-  const [myTheme, setMyTheme] = useState({ theme: "light" })
+  const [counter1, setCounter1] = useState(0)
+  const [counter2, setCounter2] = useState(0)
+
+  const increamentOne = useCallback(() => {
+    setCounter1((prevCount) => prevCount + 1)
+  }, [])
+
+  const increamentFive = useCallback(() => {
+    setCounter2((prevCount) => prevCount + 5)
+  }, [])
+  console.log("App is rendering");
   return (
-    <ThemeContext.Provider value={myTheme}>
-      <div className="row">
-        <div className="col-md-12 custom-print">
-          Hello
-        </div>
-      </div>
-      {/* <div className="App">
-        <Counter>{(count, increament) => <ClickCounter count={count} increament={increament} />}</Counter>
-        <Counter>{(count, increament) => <HoverCounter count={count} increament={increament} />}</Counter>
-        <HoverCounter />
-        <button onClick={() => setMyTheme({ theme: "dark" })}>change</button>
-        <ThemeTester />
-      </div> */}
-    </ThemeContext.Provider>
+    <div>
+      <Title counterName="Counter 1" />
+      <Counter counterName="Counter 1" value={counter1} />
+      <Button counterName="1" handleClick={increamentOne}>Increament 1</Button>
+      <hr />
+
+      <Title counterName="Counter 2" />
+      <Counter counterName="Counter 2" value={counter2} />
+      <Button counterName="5" handleClick={increamentFive}>Increament 1</Button>
+    </div>
   )
 }
 

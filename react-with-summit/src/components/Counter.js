@@ -1,17 +1,10 @@
-import React from "react";
+import React from 'react';
 
-class Counter extends React.Component {
-    state = {
-        count: 0
-    }
-    increament =()=>{
-        this.setState((prevState)=>({count: prevState.count + 1}))
-    }
-    render(){
-        const {children} = this.props;
-        const {count} = this.state;
-        return children(count,this.increament)
-    }
-}
+const Counter = ({value,counterName}) => {
+    console.log(`Value of ${counterName} is rendered`);
+    return (
+        <p>Value is: {value}</p>
+    );
+};
 
-export default Counter;
+export default React.memo(Counter);
