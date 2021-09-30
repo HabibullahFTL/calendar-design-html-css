@@ -1,31 +1,32 @@
-import React, { useCallback, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
-import Button from './components/Button';
-import Counter from './components/Counter';
-import Title from './components/Title';
+import Input from './components/Input';
 
 const App = () => {
-  const [counter1, setCounter1] = useState(0)
-  const [counter2, setCounter2] = useState(0)
+  const [times, setTimes] = useState(new Date())
+  const [isStop, setIsStop] = useState(false)
 
-  const increamentOne = useCallback(() => {
-    setCounter1((prevCount) => prevCount + 1)
+  const inputRef = useRef(null)
+  const timeRef = useRef(new Date())
+
+  useEffect(() => {
+    inputRef.current.focus()
   }, [])
 
-  const increamentFive = useCallback(() => {
-    setCounter2((prevCount) => prevCount + 5)
+  useEffect(() => {
+    timeRef.current = setInterval(() => setTimes(new Date()), 1000)
+
+    return () => {
+      clearInterval(timeRef.current)
+    }
   }, [])
-  console.log("App is rendering");
   return (
     <div>
-      <Title counterName="Counter 1" />
-      <Counter counterName="Counter 1" value={counter1} />
-      <Button counterName="1" handleClick={increamentOne}>Increament 1</Button>
-      <hr />
-
-      <Title counterName="Counter 2" />
-      <Counter counterName="Counter 2" value={counter2} />
-      <Button counterName="5" handleClick={increamentFive}>Increament 1</Button>
+      {!isStop && <h5>{times.toLocaleTimeString()}</h5>}
+      <button onClick={() => clearInterval(timeRef.current)}>Stop Clock</button>
+      <form >
+        <Input ref={inputRef} type="text" />
+      </form>
     </div>
   )
 }
